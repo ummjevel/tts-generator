@@ -196,3 +196,5 @@ cython_debug/
 
 # zero_shot_voices
 voices/
+.gradio/
+output/

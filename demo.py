@@ -125,9 +125,33 @@ with gr.Blocks() as demo:
     gr.Markdown("## 음성합성 데모")
 
     with gr.Row():
-        model_dropdown = gr.Dropdown(label="모델 선택", choices=list(tts_models.keys()), value=list(tts_models.keys())[0])
-        speaker_dropdown = gr.Dropdown(label="화자 선택")
-        speaker_preview = gr.Audio(label="화자 미리듣기", type="filepath", interactive=False)
+        
+        # 디폴트 모델 및 화자
+        default_model = list(tts_models.keys())[0]
+        default_speaker = tts_models[default_model]["speakers"][0]
+        default_preview = tts_models[default_model]["preview_samples"][default_speaker]
+        # model_dropdown = gr.Dropdown(label="모델 선택", choices=list(tts_models.keys()), value=list(tts_models.keys())[0])
+        # speaker_dropdown = gr.Dropdown(label="화자 선택")
+        # speaker_preview = gr.Audio(label="화자 미리듣기", type="filepath", interactive=False)
+        # Gradio 컴포넌트 초기화
+        model_dropdown = gr.Dropdown(
+            label="모델 선택",
+            choices=list(tts_models.keys()),
+            value=default_model
+        )
+
+        speaker_dropdown = gr.Dropdown(
+            label="화자 선택",
+            choices=tts_models[default_model]["speakers"],
+            value=default_speaker
+        )
+
+        speaker_preview = gr.Audio(
+            label="화자 미리듣기",
+            type="filepath",
+            interactive=False,
+            value=default_preview
+        )
 
     text_input = gr.Textbox(lines=4, label="텍스트 입력", placeholder="텍스트를 입력하세요.")
     generate_btn = gr.Button("음성 생성")
@@ -141,4 +165,4 @@ with gr.Blocks() as demo:
 
 # 서버에서 실행
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=7860)
+    demo.launch(server_name="0.0.0.0", server_port=7860, share=True)
