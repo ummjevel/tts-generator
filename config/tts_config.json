@@ -1,0 +1,17 @@
+{
+  "MeloTTS": {
+    "speakers": ["KR"],
+    "preview_samples": {
+        "KR" : "voices/melotts_kr1_2.wav"
+    }
+  },
+  "xTTSv2": {
+    "speakers": ["SPK013-m", "SPK-16-fm", "SPK027-m", "SPK028-fm"],
+    "preview_samples": {
+      "SPK013-m": "voices/aihub_news_SPK013KBSCU035M002.wav",
+      "SPK-16-fm": "voices/aihub_news_SPK016KBSCU001F002.wav",
+      "SPK027-m": "voices/aihub_news_SPK027KBSCU020M002.wav",
+      "SPK028-fm": "voices/aihub_news_SPK028KBSCU036F002.wav"
+    }
+  }
+}
